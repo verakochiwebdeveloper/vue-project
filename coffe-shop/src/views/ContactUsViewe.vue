@@ -81,10 +81,10 @@
 </template>
 <script>
 
-import NavBarComponent from '../components/NavBarComponent.vue'
+import NavBarComponent from '@/components/NavBarComponent.vue'
 
 
 export default {
-  components: {NavBarComponent, }
+  components: {NavBarComponent}
 }
 </script>
