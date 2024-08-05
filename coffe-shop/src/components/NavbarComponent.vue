@@ -1,46 +1,44 @@
 <template>
   <header>
-    <ul class="header d-flex justify-content-center justify-content-md-start flex-wrap">
-      <li class="header__item">
-        <router-link :to="links[0].link">
-          <img :src="require(`@/assets/logo/${links[0].icon}`)" :alt="links[0].icon"/>
-        </router-link>
-      </li>
-      <li class="header__item">
-        <router-link :to="links[1].text">{{links[1].text}}</router-link>
-      </li>
-      <li class="header__item">
-        <router-link :to="links[2].link">{{links[2].text}}</router-link>
-      </li>
-      <li class="header__item">
-        <router-link :to="links[3].link">{{links[3].text}}</router-link>
-      </li>
+    <ul
+      class="header d-flex justify-content-center justify-content-md-start flex-wrap"
+    >
+      
+      <nav-item
+        :link="links.header.link"
+        classLink="header__item"
+        >
+        <img
+            :src="require(`@/assets/logo/${links.header.icon}`)"
+            :alt="links.header.icon"
+          />
+      </nav-item>
+      <nav-item
+        v-for="link in links.other"
+        :key="link.id"
+        :link="link.link"
+        :text="link.text"
+        classLink="header__item"
+      />
     </ul>
   </header>
 </template>
 <script>
+import NavItem from "@/components/NavItem.vue";
+
 export default {
+  components: { NavItem },
   data() {
     return {
-      links: [
-        {id: 0,
-          link: '/',
-          icon: 'Logo.svg'
-        },
-        {id: 1,
-          text: 'Our Coffee',
-          link: '/our-coffe '
-        },
-        {id: 2,
-          text: 'For your pleasure ',
-          link: '/for-your-pleasure'
-        },
-        {id: 3,
-          text: 'Contact us ',
-          link: '/contact-us'
-        },
-      ]
-    }
-  }
-}
+      links: {
+        header: { id: 0, link: "/", icon: "Logo.svg" },
+        other: [
+          { id: 1, text: "Our Coffee", link: "/our-coffe" },
+          { id: 2, text: "For your pleasure ", link: "/for-your-pleasure" },
+          { id: 3, text: "Contact us ", link: "/contact-us" },
+        ],
+      },
+    };
+  },
+};
 </script>

@@ -70,34 +70,40 @@
           <div class="col-lg-10 offset-lg-1">
             <div class="shop__wrapper">
               <product-card
-                :name="coffeBase[0].name"
-                :price="coffeBase[0].price"
-                :image="coffeBase[0].image"
+              :classItem="'shop__item'"
+                :name="base[0].name"
+                :price="base[0].price"
+                :image="base[0].image"
               />
               <product-card
-                :name="coffeBase[1].name"
-                :price="coffeBase[1].price"
-                :image="coffeBase[1].image"
+              :classItem="'shop__item'"
+                :name="base[1].name"
+                :price="base[1].price"
+                :image="base[1].image"
               />
               <product-card
-                :name="coffeBase[2].name"
-                :price="coffeBase[2].price"
-                :image="coffeBase[2].image"
+              :classItem="'shop__item'"
+                :name="base[2].name"
+                :price="base[2].price"
+                :image="base[2].image"
               />
               <product-card
-                :name="coffeBase[3].name"
-                :price="coffeBase[3].price"
-                :image="coffeBase[3].image"
+              :classItem="'shop__item'"
+                :name="base[3].name"
+                :price="base[3].price"
+                :image="base[3].image"
               />
               <product-card
-                :name="coffeBase[4].name"
-                :price="coffeBase[4].price"
-                :image="coffeBase[4].image"
+              :classItem="'shop__item'"
+                :name="base[4].name"
+                :price="base[4].price"
+                :image="base[4].image"
               />
               <product-card
-                :name="coffeBase[5].name"
-                :price="coffeBase[5].price"
-                :image="coffeBase[5].image"
+              :classItem="'shop__item'"
+                :name="base[5].name"
+                :price="base[5].price"
+                :image="base[5].image"
               />
               
             </div>
@@ -115,28 +121,28 @@ export default {
   components: { NavBarComponent, ProductCard },
   data() {
     return {
-      coffeBase: [
+      base: [
         {
           id: 0,
-          image: 'coffee-1.png',
+          image: 'coffee-1.jpg',
           name: 'Solimo Coffee Beans 2kg',
           price: '10.73'
         },
         {
           id: 1,
-          image: 'coffee-2.png',
+          image: 'coffee-2.jpg',
           name: 'Presto Coffee Beans 1kg',
           price: '15.99'
         },
         {
           id: 2,
-          image: 'coffee-3.png',
+          image: 'coffee-3.jpg',
           name: 'AROMISTICO Coffee 1kg',
           price: '6.99'
         },
         {
           id: 3,
-          image: 'coffee-3.png',
+          image: 'coffee-3.jpg',
           name: 'AROMISTICO Coffee 1kg',
           price: '6.99'
         },
@@ -148,7 +154,7 @@ export default {
         },
         {
           id: 5,
-          image: 'coffee-3.png',
+          image: 'coffee-3.jpg',
           name: 'AROMISTICO Coffee 1kg',
           price: '6.99'
         }

@@ -45,31 +45,37 @@
           <div class="col-lg-10 offset-lg-1">
             <div class="shop__wrapper">
               <product-card
+              :classItem="'shop__item'"
                 :name="coffe[0].name"
                 :price="coffe[0].price"
                 :image="coffe[0].image"
               />
               <product-card
+              :classItem="'shop__item'"
               :name="coffe[1].name"
               :price="coffe[1].price"
               :image="coffe[1].image"
               />
               <product-card
+              :classItem="'shop__item'"
               :name="coffe[2].name"
               :price="coffe[2].price"
               :image="coffe[2].image"
               />
               <product-card
+              :classItem="'shop__item'"
               :name="coffe[3].name"
               :price="coffe[3].price"
               :image="coffe[3].image"
               />
               <product-card
+              :classItem="'shop__item'"
               :name="coffe[4].name"
               :price="coffe[4].price"
               :image="coffe[4].image"
               />
               <product-card
+              :classItem="'shop__item'"
               :name="coffe[5].name"
               :price="coffe[5].price"
               :image="coffe[5].image"
@@ -93,7 +99,7 @@ export default {
       coffe: [
         {
           id: 0,
-          image: "coffee-1.png",
+          image: "coffee-1.jpg",
           name: "Solimo Coffee Beans 2kg",
           price: "10.73",
         },
@@ -105,7 +111,7 @@ export default {
         },
         {
           id: 2,
-          image: "coffee-3.png",
+          image: "coffee-3.jpg",
           name: "AROMISTICO Coffee 1kg",
           price: "6.99",
         },
@@ -117,13 +123,13 @@ export default {
         },
         {
           id: 4,
-          image: "coffee-3.png",
+          image: "coffee-3.jpg",
           name: "AROMISTICO Coffee 1kg",
           price: "6.99",
         },
         {
           id: 5,
-          image: "coffee-3.png",
+          image: "coffee-3.jpg",
           name: "AROMISTICO Coffee 1kg",
           price: "6.99",
         },
