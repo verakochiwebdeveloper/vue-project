@@ -44,42 +44,14 @@
         <div class="row">
           <div class="col-lg-10 offset-lg-1">
             <div class="shop__wrapper">
-              <product-card
+              <product-card v-for="card in coffe"
+              :key="card.id"
               :classItem="'shop__item'"
-                :name="coffe[0].name"
-                :price="coffe[0].price"
-                :image="coffe[0].image"
+              :name="card.name"
+              :price="card.price"
+              :image="card.image"
               />
-              <product-card
-              :classItem="'shop__item'"
-              :name="coffe[1].name"
-              :price="coffe[1].price"
-              :image="coffe[1].image"
-              />
-              <product-card
-              :classItem="'shop__item'"
-              :name="coffe[2].name"
-              :price="coffe[2].price"
-              :image="coffe[2].image"
-              />
-              <product-card
-              :classItem="'shop__item'"
-              :name="coffe[3].name"
-              :price="coffe[3].price"
-              :image="coffe[3].image"
-              />
-              <product-card
-              :classItem="'shop__item'"
-              :name="coffe[4].name"
-              :price="coffe[4].price"
-              :image="coffe[4].image"
-              />
-              <product-card
-              :classItem="'shop__item'"
-              :name="coffe[5].name"
-              :price="coffe[5].price"
-              :image="coffe[5].image"
-              />
+              
               
             </div>
           </div>

@@ -69,43 +69,13 @@
         <div class="row">
           <div class="col-lg-10 offset-lg-1">
             <div class="shop__wrapper">
-              <product-card
+              <product-card v-for="card in base"
+              :key="card.id"
               :classItem="'shop__item'"
-                :name="base[0].name"
-                :price="base[0].price"
-                :image="base[0].image"
+              :name="card.name"
+              :price="card.price"
+              :image="card.image"
               />
-              <product-card
-              :classItem="'shop__item'"
-                :name="base[1].name"
-                :price="base[1].price"
-                :image="base[1].image"
-              />
-              <product-card
-              :classItem="'shop__item'"
-                :name="base[2].name"
-                :price="base[2].price"
-                :image="base[2].image"
-              />
-              <product-card
-              :classItem="'shop__item'"
-                :name="base[3].name"
-                :price="base[3].price"
-                :image="base[3].image"
-              />
-              <product-card
-              :classItem="'shop__item'"
-                :name="base[4].name"
-                :price="base[4].price"
-                :image="base[4].image"
-              />
-              <product-card
-              :classItem="'shop__item'"
-                :name="base[5].name"
-                :price="base[5].price"
-                :image="base[5].image"
-              />
-              
             </div>
           </div>
         </div>
