@@ -37,17 +37,10 @@ import NavItem from "@/components/NavItem.vue"
 
 export default {
   components: { NavItem },
-  data() {
-    return {
-      links: {
-        footer: { id: 0, link: "/", icon: "Logo_black.svg" },
-        other: [
-          { id: 1, text: "Our Coffee", link: "/our-coffe" },
-          { id: 2, text: "For your pleasure ", link: "/for-your-pleasure" },
-          { id: 3, text: "Contact us ", link: "/contact-us" },
-        ],
-      },
-    };
-  },
+   computed: {
+    links() {
+      return this.$store.getterrs["getFooterLinks"]
+    }
+  }
 };
 </script>
