@@ -72,10 +72,10 @@
               <product-card v-for="card in base"
               :key="card.id"
               :classItem="'shop__item'"
-              :name="card.name"
-              :price="card.price"
-              :image="card.image"
+              :card="card"
+              @onNavigate="navigate"
               />
+              
             </div>
           </div>
         </div>
@@ -87,49 +87,20 @@
 import NavBarComponent from "@/components/NavBarComponent.vue";
 import ProductCard from "@/components/ProductCard.vue";
 
+import { navigate} from '../mixins/navigate';
+
 export default {
   components: { NavBarComponent, ProductCard },
-  data() {
-    return {
-      base: [
-        {
-          id: 0,
-          image: 'coffee-1.jpg',
-          name: 'Solimo Coffee Beans 2kg',
-          price: '10.73'
-        },
-        {
-          id: 1,
-          image: 'coffee-2.jpg',
-          name: 'Presto Coffee Beans 1kg',
-          price: '15.99'
-        },
-        {
-          id: 2,
-          image: 'coffee-3.jpg',
-          name: 'AROMISTICO Coffee 1kg',
-          price: '6.99'
-        },
-        {
-          id: 3,
-          image: 'coffee-3.jpg',
-          name: 'AROMISTICO Coffee 1kg',
-          price: '6.99'
-        },
-        {
-          id: 4,
-          image: 'coffee-3.png',
-          name: 'AROMISTICO Coffee 1kg',
-          price: '6.99'
-        },
-        {
-          id: 5,
-          image: 'coffee-3.jpg',
-          name: 'AROMISTICO Coffee 1kg',
-          price: '6.99'
-        }
-      ]
+  computed: {
+    base() {
+      return this.$store.getters["getbase"]
     }
-  }
+  },
+  data(){
+    return {
+      name:'coffe'
+    }
+  },
+  mixins: [navigate]
 };
 </script>

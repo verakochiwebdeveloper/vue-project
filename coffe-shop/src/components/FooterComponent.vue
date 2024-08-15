@@ -39,7 +39,7 @@ export default {
   components: { NavItem },
    computed: {
     links() {
-      return this.$store.getterrs["getFooterLinks"]
+      return this.$store.getters["getFooterLinks"]
     }
   }
 };

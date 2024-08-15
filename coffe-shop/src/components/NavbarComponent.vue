@@ -30,7 +30,7 @@ export default {
   components: { NavItem },
   computed: {
     links() {
-      return this.$store.getterrs["getHeaderLinks"]
+      return this.$store.getters["getHeaderLinks"]
     }
   }
 };

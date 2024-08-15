@@ -1,24 +1,24 @@
 <template>
     <main>
-        <div class="banner goodspage-banner">
+        <div class="banner" :class="pageName ==='coffe' ? 'coffepage-banner': 'goodspage-banner'">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6">
                         <nav-bar-component/>
                     </div>
                 </div>
-                <h1 class="title-big">For your pleasure</h1>
+                <h1 class="title-big">{{card.name}}</h1>
             </div>
         </div>
         <section class="shop">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-4 offset-2">
-                        <img class="shop__girl" src="img/coffee_goods.jpg" alt="girl">
+                        <img class="shop__girl" :src="require(`@/assets/img/${card.image}`)" :alt="image">
                     </div>
                     <div class="col-lg-4">
                         <div class="title">About our beans</div>
-                        <img class="beanslogo" src="logo/Beans_logo_dark.svg" alt="Beans logo">
+                        <img class="beanslogo" src="assets/logo/Beans_logo_dark.svg" alt="Beans logo">
                         <div class="shop__text">
                             Extremity sweetness difficult behaviour he of. On disposal of as landlord horrible.
                             <br><br>
@@ -37,7 +37,7 @@
                     <div class="col-lg-10 offset-lg-1">
                         <div class="shop__wrapper">
                             <div class="shop__item">
-                                <img src="./img/good-1.jpg" alt="coffee">
+                                <img src="/assets/img/good-1.jpg" alt="coffee">
                                 <div class="shop__item-title">
                                     Solimo Coffee Beans 2kg
                                 </div>
@@ -45,7 +45,7 @@
                                 <div class="shop__item-price">10.73$</div>
                             </div>
                             <div class="shop__item">
-                                <img src="./img/good-1.jpg" alt="coffee">
+                                <img src="/assets/img/good-1.jpg" alt="coffee">
                                 <div class="shop__item-title">
                                     Presto Coffee Beans 1kg
                                 </div>
@@ -53,7 +53,7 @@
                                 <div class="shop__item-price">15.99$</div>
                             </div>
                             <div class="shop__item">
-                                <img src="./img/good-1.jpg" alt="coffee">
+                                <img src="/assets/img/good-1.jpg" alt="coffee">
                                 <div class="shop__item-title">
                                     AROMISTICO Coffee 1kg
                                 </div>
@@ -61,7 +61,7 @@
                                 <div class="shop__item-price">6.99$</div>
                             </div>
                             <div class="shop__item">
-                                <img src="./img/good-1.jpg" alt="coffee">
+                                <img src="/assets/img/good-1.jpg" alt="coffee">
                                 <div class="shop__item-title">
                                     Solimo Coffee Beans 2kg
                                 </div>
@@ -69,7 +69,7 @@
                                 <div class="shop__item-price">10.73$</div>
                             </div>
                             <div class="shop__item">
-                                <img src="./img/good-1.jpg" alt="coffee">
+                                <img src="/assets/img/good-1.jpg" alt="coffee">
                                 <div class="shop__item-title">
                                     Solimo Coffee Beans 2kg
                                 </div>
@@ -77,12 +77,12 @@
                                 <div class="shop__item-price">10.73$</div>
                             </div>
                             <div class="shop__item">
-                                <img src="./img/good-1.jpg" alt="coffee">
+                                <img src="/assets/img/good-1.jpg" alt="coffee">
                                 <div class="shop__item-title">
                                     Solimo Coffee Beans 2kg
                                 </div>
                                 <div class="shop__item-country">Brazil</div>
-                                <div class="shop__item-price">10.73$</div>
+                                <div class="shop__item-price">{{card.price | addCurruncy}}</div>
                             </div>
                         </div>
                     </div>
@@ -100,47 +100,21 @@ import ProductCard from '@/components/ProductCard.vue'
 
 export default {
   components: {NavBarComponent, ProductCard },
-  data() {
-    return {
-      goods: [
-        {
-          id: 0,
-          image: 'coffee-1.png',
-          name: 'Solimo Coffee Beans 2kg',
-          price: '10.73'
-        },
-        {
-          id: 1,
-          image: 'coffee-2.png',
-          name: 'Presto Coffee Beans 1kg',
-          price: '15.99'
-        },
-        {
-          id: 2,
-          image: 'coffee-3.png',
-          name: 'AROMISTICO Coffee 1kg',
-          price: '6.99'
-        },
-        {
-          id: 3,
-          image: 'coffee-3.png',
-          name: 'AROMISTICO Coffee 1kg',
-          price: '6.99'
-        },
-        {
-          id: 4,
-          image: 'coffee-3.png',
-          name: 'AROMISTICO Coffee 1kg',
-          price: '6.99'
-        },
-        {
-          id: 5,
-          image: 'coffee-3.png',
-          name: 'AROMISTICO Coffee 1kg',
-          price: '6.99'
-        }
-      ]
+  filters: {
+    
+  },
+  computed: {
+    pageName(){
+        return this.$route.name
+    },
+    card(){
+        return this.$store.getters["getProductById"](this.$route.params.id)
+        
+    },
+    goods() {
+        
+      return this.$store.getters["getgoods"]
     }
-  }
+  },
 }
 </script>
