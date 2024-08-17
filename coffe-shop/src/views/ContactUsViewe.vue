@@ -148,8 +148,21 @@ export default {
    async submit() {
         const isFormCorrect = await this.v$.$validate()
       if (!isFormCorrect) return
-      
 
+      const massage = {
+        name: this.name,
+        email: this.email,
+        phone: this.phone,
+        massage: this.message
+      }
+      
+      fetch('http://localhost:3000/contacts'), {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'aplication/json'
+        },
+        body: JSON.stringify(massage)
+      }
     }
   }
 };

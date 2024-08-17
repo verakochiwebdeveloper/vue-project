@@ -101,6 +101,13 @@ export default {
       name:'coffe'
     }
   },
-  mixins: [navigate]
+  mixins: [navigate],
+  mounted() {
+    fetch('http://localhost:3000/coffe') 
+    .then(res => res.json())
+    .then(data= {
+      this.$store.dispatch("setCoffeData", data)
+    })
+  }
 };
 </script>
