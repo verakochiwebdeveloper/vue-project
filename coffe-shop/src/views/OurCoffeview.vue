@@ -52,6 +52,7 @@
                 type="text"
                 placeholder="start typing here..."
                 class="shop__search-input"
+                @input="onSearch($event)"
               />
             </form>
           </div>
@@ -59,9 +60,18 @@
             <div class="shop__filter">
               <div class="shop__filter-label">Or filter</div>
               <div class="shop__filter-group">
-                <button class="shop__filter-btn">Brazil</button>
-                <button class="shop__filter-btn">Kenya</button>
-                <button class="shop__filter-btn">Columbia</button>
+                <button
+                  class="shop__filter-btn"
+                  @click="onSort('Brazil')"
+                ></button>
+                <button
+                  class="shop__filter-btn"
+                  @click="onSort('Kenya')"
+                ></button>
+                <button
+                  class="shop__filter-btn"
+                  @click="onSort('Columbia')"
+                ></button>
               </div>
             </div>
           </div>
@@ -69,13 +79,13 @@
         <div class="row">
           <div class="col-lg-10 offset-lg-1">
             <div class="shop__wrapper">
-              <product-card v-for="card in base"
-              :key="card.id"
-              :classItem="'shop__item'"
-              :card="card"
-              @onNavigate="navigate"
+              <product-card
+                v-for="card in base"
+                :key="card.id"
+                :classItem="'shop__item'"
+                :card="card"
+                @onNavigate="navigate"
               />
-              
             </div>
           </div>
         </div>
@@ -86,14 +96,22 @@
 <script>
 import NavBarComponent from "@/components/NavBarComponent.vue";
 import ProductCard from "@/components/ProductCard.vue";
-
+import debounce from 'debounce';
 import { navigate} from '../mixins/navigate';
 
 export default {
   components: { NavBarComponent, ProductCard },
   computed: {
-    base() {
+    coffee() {
       return this.$store.getters["getbase"]
+    },
+    SearchValue: {
+      set(value) {
+        this.$store.dispatch("setSearchValue", value)
+      },
+      get() {
+        return this.$store.getters["getSearchValue"]
+      }
     }
   },
   data(){
@@ -103,11 +121,26 @@ export default {
   },
   mixins: [navigate],
   mounted() {
-    fetch('http://localhost:3000/coffe') 
+    fetch('http://localhost:3000/coffe')
     .then(res => res.json())
-    .then(data= {
+    .then(data=> {
       this.$store.dispatch("setCoffeData", data)
     })
+  },
+  methods:{
+    onSearch: debounce(function(event){
+      this.onSort(event.target.value)
+    }, 500),
+
+    },
+    onSort(value) {
+      fetch(`http://localhost:3000/coffe?q=${value}`)
+    .then(res => res.json())
+    .then(data=> {
+      this.$store.dispatch("setCoffeData", data)
+    })
+      //this.$store.dispatch("setSortValue", value)
+    }
   }
 };
 </script>

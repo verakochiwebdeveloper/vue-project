@@ -1,65 +1,53 @@
-const  coffe = {
-    state: {
-        coffe: [
-        {
-          id: 0,
-          image: "coffee-1.jpg",
-          name: "Solimo Coffee Beans 2kg",
-          price: "10.73",
-        },
-        {
-          id: 1,
-          image: "coffee-2.jpg",
-          name: "Presto Coffee Beans 1kg",
-          price: "15.99",
-        },
-        {
-          id: 2,
-          image: "coffee-3.jpg",
-          name: "AROMISTICO Coffee 1kg",
-          price: "6.99",
-        },
-        {
-          id: 3,
-          image: "coffee-3.png",
-          name: "AROMISTICO Coffee 1kg",
-          price: "6.99",
-        },
-        {
-          id: 4,
-          image: "coffee-3.jpg",
-          name: "AROMISTICO Coffee 1kg",
-          price: "6.99",
-        },
-        {
-          id: 5,
-          image: "coffee-3.jpg",
-          name: "AROMISTICO Coffee 1kg",
-          price: "6.99",
-        },
-      ],
-    },
-    mutations: {
-      setCoffeData(state, data) {
-        state.coffee = data
-      }
-    },
-    action: {
-      setCoffeData({commit}, data) {
-        commit('setCoffeData', data)
+import { search } from "core-js/fn/symbol";
 
-      }
+const coffe = {
+  state: {
+    coffe: [],
+    searchValue: "",
+    sortValue: "",
+  },
+  mutations: {
+    setCoffeData(state, data) {
+      state.coffee = data;
+    },
+   /* setSearchValue(state, value) {
+      state.searchValue = value;
+    },
+    setSortValue(state, value) {
+      state.sortValue = value;
+    },*/
+    action: {
+      setCoffeData({ commit }, data) {
+        commit("setCoffeData", data);
+      },
+      /*setSearchValue({ commit }, value) {
+        commit("setSearchValue", value);
+      },
+      setSortValue({ commit }, value) {
+        commit("setSortValue", value);
+      },*/
     },
     getters: {
-        getCoffe(state) {
-            return state.coffe
-        },
-        getProductById(state) {
-          return (id) => {
-            return state.coffe.find((card) => card.id === +id)
-          }
-        }
-    }
-}
+      getCoffe(state) {
+        return state.coffe.filter((item) =>
+          item.name
+        .toLowerCase()
+        .includes(state.searchValue.toLowerCase())
+        ).filter(item => item.country 
+          .toLowerCase()
+        .includes(state.sortValue.toLowerCase())
+        )
+      },
+      getProductById(state) {
+        return (id) => {
+          return state.coffe.find((card) => card.id === +id);
+        };
+      },
+      getSearchValue(state) {
+        return state.SearchValue;
+      },
+    },
+  },
+};
 
-export default coffe
+export default coffe;

@@ -30,7 +30,7 @@
               src="assets/logo/Beans_logo_dark.svg"
               alt="Beans logo"
             />
-            <div class="shop__text">
+            <div class="shop__text" v-if="product.discription">
               {{product.discription}}
             </div>
           </div>
@@ -41,12 +41,12 @@
         <div class="row">
           <div class="col-lg-10 offset-lg-1">
             <div class="shop__wrapper">
-              <div class="shop__item">
+              <div class="shop__item" v-if="product.country">
                 <img
-              class="shop__girl"
-              :src="product.image"
-              :alt="image"
-            />
+                class="shop__girl"
+                :src="product.image"
+                :alt="image"
+              />
                 <div class="shop__item-title">{{product.name}}</div>
                 <div class="shop__item-country">{{product.country}}</div>
                 <div class="shop__item-price">{{ product.price }}</div>
@@ -76,13 +76,14 @@ export default {
   },
 
   mounted() {
-    fetch(`http://localhost:3000/coffe/${this.$route.params.id}`)
+    fetch(`http://localhost:3000/${this.pageName}/${this.$route.params.id}`)
     .then(res => res.json())
     .then(data=> {
         this.product = data
-      
+        
     });
   },
+  
   filters: {
 
   },
